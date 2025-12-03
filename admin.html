@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin — EPT</title><link rel="stylesheet" href="style.css"></head><body class="admin-body">
+<nav><div class="brand">EPT - Admin</div><div class="nav-right"><a class="btn" href="index.html">Salir</a></div></nav>
+<main class="container">
+  <div class="admin-grid">
+    <div class="card">
+      <h2>Agregar / Subir Tarea</h2>
+      <label>Título</label><input id="admin_titulo">
+      <label>Descripción</label><textarea id="admin_des"></textarea>
+      <label>Curso</label><select id="admin_curso"></select>
+      <label>Tipo</label><select id="admin_tipo"><option value="gratis">Gratis</option><option value="premium">Premium</option><option value="full">Full</option></select>
+      <label>Visible para (opcional)</label><select id="admin_visible" multiple></select>
+      <label>Expira en (dias)</label><input type="number" id="admin_dias" min="0" value="0">
+      <div class="row" style="margin-top:10px"><button class="btn" onclick="adminAgregarTarea()">Guardar tarea</button></div>
+      <p id="admin_msg" class="small green"></p>
+    </div>
+    <div class="card"><h2>Usuarios</h2><div id="tablaUsuarios"></div></div>
+    <div class="card"><h2>Tareas registradas</h2><div id="tablaTareas"></div></div>
+  </div>
+</main>
+<footer class="footer">EPT • Admin</footer>
+<script src="app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', ()=>{
+  const sc=document.getElementById('admin_curso'), vis=document.getElementById('admin_visible');
+  COURSES.forEach(c=> sc.appendChild(new Option(c,c)));
+  for(const k of Object.keys(USUARIOS_ORDERED)){ const opt=document.createElement('option'); opt.value=k; opt.text=USUARIOS_ORDERED[k].displayName; vis.appendChild(opt); }
+  renderAdminTables();
+});
+</script>
+</body></html>

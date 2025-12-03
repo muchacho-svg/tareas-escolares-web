@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EPT — Login</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav><div class="brand">EPT • Tareas Escolares</div><div class="nav-right"><a class="btn" href="index.html">Inicio</a></div></nav>
+<main class="container">
+  <section class="card login-box">
+    <h1 class="title">Inicia sesión</h1>
+    <p class="subtitle">Selecciona tu nombre y escribe tu contraseña</p>
+    <form onsubmit="handleLogin(event)">
+      <label>Usuario</label>
+      <select id="user" required>
+        <option value="">Seleccionar usuario...</option>
+      </select>
+      <label>Contraseña</label>
+      <input id="password" type="password" placeholder="Contraseña" required>
+      <div class="row" style="margin-top:12px"><button class="btn">Ingresar</button></div>
+      <p id="msg" class="small"></p>
+      <p class="small">inicia <strong>secion</strong> con la contraseña <strong>que te entrege/dije</strong></p>
+    </form>
+  </section>
+</main>
+<footer class="footer">EPT • Plataforma escolar</footer>
+<script src="app.js"></script>
+<script>
+// populate select with users
+document.addEventListener('DOMContentLoaded', ()=>{
+  const sel=document.getElementById('user');
+  for(const k of Object.keys(USUARIOS_ORDERED)){
+    const opt=document.createElement('option'); opt.value=k; opt.textContent=USUARIOS_ORDERED[k].displayName; sel.appendChild(opt);
+  }
+});
+</script>
+</body>
+</html>

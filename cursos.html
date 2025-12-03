@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cursos — EPT</title><link rel="stylesheet" href="style.css"></head><body>
+<nav><div class="brand">EPT</div><div class="nav-right"><a class="btn" href="index.html">Salir</a></div></nav>
+<main class="container">
+  <h1 class="center">Cursos</h1>
+  <section class="grid-3 card" id="coursesContainer"></section>
+</main>
+<footer class="footer">EPT • Plataforma escolar</footer>
+<script src="app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', ()=>{
+  const c=document.getElementById('coursesContainer');
+  COURSES.forEach(course=>{
+    const d=document.createElement('div'); d.className='course-card card';
+    d.innerHTML = `<h3>${course}</h3><p class="small">Ver tareas y material</p><div><a class="btn" href="tareas.html?curso=${encodeURIComponent(course)}">Ver tareas</a></div>`;
+    c.appendChild(d);
+  });
+});
+</script>
+</body></html>
